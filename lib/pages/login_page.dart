@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:whoami/service/auth.service.dart';
+import 'package:whoami/widgets/custom_text_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   late String email, password;
   final formkey = GlobalKey<FormState>();
   final firebaseAuth = FirebaseAuth.instance;
+  final authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,21 +35,41 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Form(
                 key: formkey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    titleText(),
-                    customSizedBox(),
-                    emailTextField(),
-                    customSizedBox(),
-                    passwordTextField(),
-                    customSizedBox(),
-                    forgotPasswordField(),
-                    customSizedBox(),
-                    signInButton(),
-                    customSizedBox(),
-                    signUpButton(),
-                  ],
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      titleText(),
+                      customSizedBox(),
+                      emailTextField(),
+                      customSizedBox(),
+                      passwordTextField(),
+                      customSizedBox(),
+                      forgotPasswordField(),
+                      customSizedBox(),
+                      signInButton(),
+                      customSizedBox(),
+                      CustomTextButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, "/signUpPage"),
+                        buttonText: "Hesap Oluştur ",
+                      ),
+                      customSizedBox(),
+                      CustomTextButton(
+                          onPressed: () async {
+                            final result = await authService.signInAnonymous();
+                            if (result != null) {
+                              // ignore: use_build_context_synchronously
+                              Navigator.pushReplacementNamed(
+                                  context, "/homePage");
+                            } else {
+                              // ignore: avoid_print
+                              print("Hata İle Karşılaşıldır ..");
+                            }
+                          },
+                          buttonText: "Misafir Girişi"),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -56,34 +79,10 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Center signUpButton() {
-    return Center(
-      child: TextButton(
-          onPressed: () => Navigator.pushNamed(context, "/signUpPage"),
-          child: const Text(
-            'Hesap Oluştur ',
-            style: TextStyle(color: Colors.pink),
-          )),
-    );
-  }
-
   Center signInButton() {
     return Center(
       child: TextButton(
-        onPressed: () async {
-          if (formkey.currentState!.validate()) {
-            formkey.currentState!.save();
-            try {
-              final userResult = await firebaseAuth.signInWithEmailAndPassword(
-                  email: email, password: password);
-              Navigator.pushReplacementNamed(context, "/homePage");
-
-              //   print(userResult.user!.email);
-            } catch (e) {
-              print(e.toString());
-            }
-          } else {}
-        },
+        onPressed: signIn,
         child: Container(
           height: 50,
           width: 100,
@@ -100,6 +99,24 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void signIn() async {
+    if (formkey.currentState!.validate()) {
+      formkey.currentState!.save();
+      final result = await authService.signIn(email, password);
+      if (result == "success") {
+      } else {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text("Hata"),
+                content: Text(result),
+              );
+            });
+      }
+    }
   }
 
   Center forgotPasswordField() {
@@ -119,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
         if (value!.isEmpty) {
           return "Bilgileri Eksiksiz Doldurunuz !!";
         } else {}
+        return null;
       },
       onSaved: (value) {
         password = value!;
@@ -135,6 +153,7 @@ class _LoginPageState extends State<LoginPage> {
         if (value!.isEmpty) {
           return "Bilgileri Eksiksiz Doldurunuz !!";
         } else {}
+        return null;
       },
       onSaved: (value) {
         email = value!;
