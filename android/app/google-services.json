@@ -29,6 +29,13 @@
             {
               "client_id": "579945944371-68blh2324falfu0g4krpu918j3aqs4n1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "579945944371-0u7709jbkg7eju2293p3igjggbs1dl9p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.whoami"
+              }
             }
           ]
         }

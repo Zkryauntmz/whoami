@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+// ignore: unused_import
 import 'package:firebase_core/firebase_core.dart';
 
 class AuthService {
@@ -11,6 +12,7 @@ class AuthService {
       print(result.user!.uid);
       return result.user;
     } catch (e) {
+      // ignore: avoid_print
       print("Anon Error ");
       return null;
     }
@@ -20,6 +22,7 @@ class AuthService {
     try {
       // ignore: unused_local_variable
       final result = await firebaseAuth.sendPasswordResetEmail(email: email);
+      // ignore: avoid_print
       print("Mail Kutunuzu Kontrol Ediniz ...");
       // ignore: empty_catches
     } catch (e) {}

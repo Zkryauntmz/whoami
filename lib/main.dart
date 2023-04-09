@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:whoami/pages/auth/login_page.dart';
+import 'package:whoami/pages/auth/sign_up.dart';
 import 'package:whoami/pages/home_page.dart';
-import 'package:whoami/pages/login_page.dart';
-import 'package:whoami/pages/sing_up.dart';
-
+import 'package:whoami/utils/customColors.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -11,13 +11,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,13 +24,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       routes: {
         "/loginPage": (context) => const LoginPage(),
-        "/signUpPage": (context) => const SignUp(),
-        "/homePage": (context) => const HomePage(),
+        "/signUp": (context) => const SignUp(),
+        "/homePage": (context) => const HomePage()
       },
       theme: ThemeData(
-          //   scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,
-          ),
-      home: const LoginPage(),
+        scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,
+      ),
+      home: const Scaffold(
+        body: LoginPage(),
+      ),
     );
   }
 }
