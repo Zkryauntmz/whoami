@@ -120,7 +120,9 @@ class _LoginPageState extends State<LoginPage> {
   Center forgotPasswordButton() {
     return Center(
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          authService.firebaseAuth.sendPasswordResetEmail(email: email);
+        },
         child: customText(
           "Sifremi Unuttum",
           CustomColors.textButtonColor,
