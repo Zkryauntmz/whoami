@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:whoami/pages/auth/forget_pass.dart';
 import 'package:whoami/pages/auth/login_page.dart';
 import 'package:whoami/pages/auth/sign_up.dart';
 import 'package:whoami/pages/home_page.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "/loginPage": (context) => const LoginPage(),
         "/signUp": (context) => const SignUp(),
-        "/homePage": (context) => HomePage()
+        "/homePage": (context) => HomePage(),
+        "/forgetPass": (context) => const ForgetPassword(),
       },
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,

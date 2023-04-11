@@ -121,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
     return Center(
       child: TextButton(
         onPressed: () {
-          authService.firebaseAuth.sendPasswordResetEmail(email: email);
+          Navigator.pushReplacementNamed(context, "/forgetPass");
         },
         child: customText(
           "Sifremi Unuttum",

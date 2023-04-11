@@ -15,6 +15,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavBar(),
+      body: Column(
+        children: [
+          Center(
+            child: searchingTextField(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -32,7 +39,8 @@ TextFormField searchingTextField() {
     },
     obscureText: true,
     style: const TextStyle(color: Colors.white),
-    decoration: customInputDecoration("Sifre"),
+    decoration:
+        customInputDecoration("Aramak Istediğiniz Kullanıcı Adını Giriniz ..."),
   );
 }
 
