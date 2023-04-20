@@ -4,6 +4,7 @@ import 'package:whoami/service/auth.service.dart';
 import 'package:whoami/utils/customColors.dart';
 import 'package:whoami/utils/customTextStyle.dart';
 import 'package:whoami/widgets/custom_text_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

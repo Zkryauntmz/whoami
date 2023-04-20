@@ -46,6 +46,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     customSizedBox(),
                     forgotPasswordButton(),
                     customSizedBox(),
+                    backToLoginPage(),
                     customSizedBox(),
                   ],
                 ),
@@ -84,12 +85,25 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 content: Text("Lutfen Emailinizi Kontrol ediniz..."),
               ),
             );
+            Navigator.pushReplacementNamed(context, "/loginPage");
           } on FirebaseAuthException catch (e) {
             print('Erro $e');
           }
         },
         child: customText(
           "Dogrulama Emaili Yolla ",
+          CustomColors.textButtonColor,
+        ),
+      ),
+    );
+  }
+
+  Center backToLoginPage() {
+    return Center(
+      child: TextButton(
+        onPressed: () => Navigator.pushNamed(context, "/loginPage"),
+        child: customText(
+          "Giriş Ekranına Geri dön",
           CustomColors.textButtonColor,
         ),
       ),
