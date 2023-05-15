@@ -1,11 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:whoami/utils/customColors.dart';
 import 'package:whoami/utils/customTextStyle.dart';
 
 class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
-
+  SignUp({Key? key}) : super(key: key);
+  User? email = FirebaseAuth.instance.currentUser;
   @override
   State<SignUp> createState() => _SignUpState();
 }
@@ -117,6 +118,12 @@ class _SignUpState extends State<SignUp> {
         var userResult = await firebaseAuth.createUserWithEmailAndPassword(
             email: email, password: password);
         formkey.currentState!.reset();
+
+        FirebaseFirestore.instance
+            .collection('Users')
+            .doc()
+            .set({"email": email, "password": password});
+
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
