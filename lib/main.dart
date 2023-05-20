@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "/loginPage": (context) => const LoginPage(),
         "/signUp": (context) => SignUp(),
-        "/homePage": (context) => HomePage(),
+        "/homePage": (context) => const HomePage(),
         "/forgetPass": (context) => const ForgetPassword(),
       },
       theme: ThemeData(

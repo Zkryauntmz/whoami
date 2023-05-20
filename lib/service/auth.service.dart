@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -27,6 +29,7 @@ class AuthService {
       final result = await firebaseAuth.sendPasswordResetEmail(email: email);
       // ignore: avoid_print
       print('Mailiniz kontrol Ediniz '); // ignore: empty_catches
+      // ignore: empty_catches
     } catch (e) {}
   }
 

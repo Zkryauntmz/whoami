@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:whoami/utils/customColors.dart';
 import 'package:whoami/utils/customTextStyle.dart';
 
+// ignore: must_be_immutable
 class SignUp extends StatefulWidget {
   SignUp({Key? key}) : super(key: key);
   User? email = FirebaseAuth.instance.currentUser;
