@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whoami/pages/auth/forget_pass.dart';
 import 'package:whoami/pages/auth/login_page.dart';
+import 'package:whoami/pages/auth/screen2.dart';
 import 'package:whoami/pages/auth/sign_up.dart';
 import 'package:whoami/pages/home_page.dart';
 import 'package:whoami/utils/customColors.dart';
@@ -28,12 +29,17 @@ class MyApp extends StatelessWidget {
         "/signUp": (context) => SignUp(),
         "/homePage": (context) => const HomePage(),
         "/forgetPass": (context) => const ForgetPassword(),
+        "/screen2": (context) => RouteTwo(
+              name: '',
+              data: '',
+              url: '',
+            ),
       },
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,
       ),
       home: const Scaffold(
-        body: LoginPage(),
+        body: HomePage(),
       ),
     );
   }
