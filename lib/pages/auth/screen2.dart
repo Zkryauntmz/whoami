@@ -21,11 +21,13 @@ class RouteTwo extends StatelessWidget {
         body: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            child: WebView(initialUrl: name + data
+            child: WebView(
+              initialUrl: url + data,
+              javascriptMode: JavascriptMode.unrestricted,
 
-                //"https://twitter.com/" '$data'
-                //"htttp://www." '$name' ".com/" '$data'
-                //            searchUserUrl(name, data)),
-                )));
+              //"https://twitter.com/" '$data'
+              //"htttp://www." '$name' ".com/" '$data'
+              //            searchUserUrl(name, data)),
+            )));
   }
 }

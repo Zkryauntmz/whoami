@@ -1,8 +1,9 @@
 // ignore_for_file: avoid_print, unused_field
 
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:whoami/widgets/NavBar.dart';
-
+import 'package:http/http.dart' as http;
 import 'auth/screen2.dart';
 
 class PhotoItem {
@@ -39,6 +40,81 @@ final List<PhotoItem> _items = [
     "twitter",
     "https://www.twitter.com/",
   ),
+  PhotoItem(
+    "https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png",
+    "tiktok",
+    "https://www.tiktok.com/@",
+  ),
+  PhotoItem(
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/768px-Telegram_2019_Logo.svg.png",
+    "telegram",
+    "https://t.me/",
+  ),
+  PhotoItem(
+    "https://play-lh.googleusercontent.com/dVsv8Hc4TOUeLFAahxR8KANg22W9dj2jBsTW1VHv3CV-5NCZjP9D9i2j5IpfVx2NTB8",
+    "pinterest",
+    "https://tr.pinterest.com/",
+  ),
+  PhotoItem(
+    "https://www.youtube.com/img/desktop/yt_1200.png",
+    "Youtube",
+    "https://www.youtube.com/@",
+  ),
+  PhotoItem(
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp0XYQs3vYq-YHipSF_Thb3JDTWCSv2XBsoog-k5iWpRopmaCkay_6fNVSU4VZE8VAfH0&usqp=CAU",
+    "Reddit",
+    "https://www.reddit.com/r/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://stackoverflow.com/users/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
+  PhotoItem(
+    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
+    "twitter",
+    "https://www.twitter.com/",
+  ),
 ];
 
 class HomePage extends StatefulWidget {
@@ -49,11 +125,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late String flag = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: searchBar(flag),
+      appBar: searchBar(),
       drawer: NavBar(),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -73,17 +148,18 @@ class _HomePageState extends State<HomePage> {
                 );
 
                 print('Bos Deger girmeyiniz');
-              } else {}
-              /*   Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => RouteTwo(
-                    name: _items[index].name,
-                    data: myController.text,
-                    url: _items[index].url,
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RouteTwo(
+                      name: _items[index].name,
+                      data: myController.text,
+                      url: _items[index].url,
+                    ),
                   ),
-                ),
-              );*/
+                );
+              }
             },
             child: Container(
               decoration: BoxDecoration(
@@ -100,7 +176,7 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-AppBar searchBar(String flag) {
+AppBar searchBar() {
   return AppBar(
       // The search area here
       title: Container(
@@ -126,6 +202,13 @@ AppBar searchBar(String flag) {
   ));
 }
 
+
+
+
+
+
+
+/*
 searchUserUrl(
   String social,
   String userdata,
@@ -151,4 +234,4 @@ searchUserUrl(
   }
   print(searchUrl);
   return searchUrl;
-}
+}*/
