@@ -27,7 +27,7 @@ class NavBar extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.login_outlined),
               title: const Text('Log out'),
-              onTap: () => null,
+              onTap: () => Navigator.pushNamed(context, "/loginPage"),
             ),
           ]),
     );

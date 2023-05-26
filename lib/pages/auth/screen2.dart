@@ -17,6 +17,18 @@ class RouteTwo extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(name),
+          titleSpacing: 00.0,
+          centerTitle: true,
+          toolbarHeight: 60.2,
+          toolbarOpacity: 0.8,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(25),
+              bottomRight: Radius.circular(25),
+            ),
+          ),
+          elevation: 0.00,
+          backgroundColor: Colors.redAccent[400],
         ),
         body: SizedBox(
             width: MediaQuery.of(context).size.width,

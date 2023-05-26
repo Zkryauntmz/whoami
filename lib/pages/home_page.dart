@@ -1,9 +1,7 @@
 // ignore_for_file: avoid_print, unused_field
 
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:whoami/widgets/NavBar.dart';
-import 'package:http/http.dart' as http;
 import 'auth/screen2.dart';
 
 class PhotoItem {
@@ -46,11 +44,6 @@ final List<PhotoItem> _items = [
     "https://www.tiktok.com/@",
   ),
   PhotoItem(
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/768px-Telegram_2019_Logo.svg.png",
-    "telegram",
-    "https://t.me/",
-  ),
-  PhotoItem(
     "https://play-lh.googleusercontent.com/dVsv8Hc4TOUeLFAahxR8KANg22W9dj2jBsTW1VHv3CV-5NCZjP9D9i2j5IpfVx2NTB8",
     "pinterest",
     "https://tr.pinterest.com/",
@@ -66,54 +59,59 @@ final List<PhotoItem> _items = [
     "https://www.reddit.com/r/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://stackoverflow.com/users/",
+    "https://cdn-icons-png.flaticon.com/512/3938/3938067.png",
+    "VK",
+    "https://vk.com/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://static.vecteezy.com/system/resources/previews/018/910/819/original/twitch-logo-twitch-icon-twitch-symbol-free-free-vector.jpg",
+    "TWİTCH TV",
+    "https://www.twitch.tv//",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-tumblr-3.png",
+    "TUMBLR",
+    "https://www.tumblr.com/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://cdn.icon-icons.com/icons2/1508/PNG/512/9gag_104549.png",
+    "9GAG",
+    "https://9gag.com/u/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://cdn.icon-icons.com/icons2/2972/PNG/512/askfm_logo_icon_186890.png",
+    "ASK.FM",
+    "https://ask.fm/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://store-images.s-microsoft.com/image/apps.38986.9007199266245737.4ac20127-5f19-4331-ac09-d2ce324e483a.6ce1617b-b233-4789-ad55-712caf23cfb3",
+    "FLİPBOARD",
+    "https://flipboard.com/@",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://static1.dmcdn.net/images/dailymotion-logo-ogtag.png.v2889585078f8ced02",
+    "DAILYMOTİON",
+    "https://www.dailymotion.com/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://play-lh.googleusercontent.com/RdCklOFg3SLN5QF8OR7cU-5bs1ESYo_pqGYrK2ena3XZDcrLOpjf7vLtNQELOR7Uo4MH",
+    "VSCO",
+    "https://vsco.co/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/lwzjoock7hcnuuo0nmmr",
+    "WATTPAD",
+    "https://www.wattpad.com/user/",
   ),
   PhotoItem(
-    "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
-    "https://www.twitter.com/",
+    "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png",
+    "WIKIPEDİA",
+    "https://tr.wikipedia.org/wiki/",
+  ),
+  PhotoItem(
+    "https://play-lh.googleusercontent.com/N71vAyC7rR2b37QDIvFOHF-sMhzt4A75hzb0UoY1t3dbAYROWWkteY-BIjqaBjF6qhg",
+    "YOUNOW",
+    "https://www.younow.com/",
   ),
 ];
 
@@ -128,15 +126,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[200],
       appBar: searchBar(),
       drawer: NavBar(),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 15,
           crossAxisCount: 3,
         ),
         itemCount: _items.length,
+        padding: const EdgeInsets.all(15),
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
@@ -179,27 +179,39 @@ class _HomePageState extends State<HomePage> {
 AppBar searchBar() {
   return AppBar(
       // The search area here
-      title: Container(
-    width: double.infinity,
-    height: 40,
-    decoration: BoxDecoration(
-        color: Colors.white, borderRadius: BorderRadius.circular(5)),
-    child: Center(
-      child: TextField(
-        controller: myController,
-        decoration: InputDecoration(
-            // prefixIcon: const Icon(Icons.search),
-            suffixIcon: IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {
-                print(myController.text);
-              },
-            ),
-            hintText: '  Aramak İstediğiniz Kullanıcı adını giriniz ',
-            border: InputBorder.none),
+      titleSpacing: 00.0,
+      centerTitle: true,
+      toolbarHeight: 60.2,
+      toolbarOpacity: 0.8,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(25),
+          bottomRight: Radius.circular(25),
+        ),
       ),
-    ),
-  ));
+      elevation: 0.00,
+      backgroundColor: Colors.redAccent[400],
+      title: Container(
+        width: 320,
+        height: 40,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Center(
+          child: TextField(
+            controller: myController,
+            decoration: InputDecoration(
+                // prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.search),
+                  onPressed: () {
+                    print(myController.text);
+                  },
+                ),
+                hintText: ' Kullanıcı adını giriniz ',
+                border: InputBorder.none),
+          ),
+        ),
+      ));
 }
 
 
