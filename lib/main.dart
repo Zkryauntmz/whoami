@@ -4,6 +4,7 @@ import 'package:whoami/pages/auth/forget_pass.dart';
 import 'package:whoami/pages/auth/login_page.dart';
 import 'package:whoami/pages/auth/screen2.dart';
 import 'package:whoami/pages/auth/sign_up.dart';
+import 'package:whoami/pages/auth/update_pass.dart';
 import 'package:whoami/pages/home_page.dart';
 import 'package:whoami/utils/customColors.dart';
 import 'firebase_options.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
               data: '',
               url: '',
             ),
+        "/update": (context) => const UpdatePass(),
       },
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,

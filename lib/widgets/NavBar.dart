@@ -16,13 +16,13 @@ class NavBar extends StatelessWidget {
               accountEmail: Text(''),
               currentAccountPicture: CircleAvatar(),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.redAccent,
               ),
             ),
             ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
-              onTap: () => null,
+              onTap: () => Navigator.pushNamed(context, "/update"),
             ),
             ListTile(
               leading: const Icon(Icons.login_outlined),

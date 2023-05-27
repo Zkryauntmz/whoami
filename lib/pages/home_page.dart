@@ -16,46 +16,46 @@ final TextEditingController myController = TextEditingController();
 final List<PhotoItem> _items = [
   PhotoItem(
     "https://cdn-icons-png.flaticon.com/512/124/124010.png",
-    "facebook",
+    "FACEBOOK",
     "https://www.facebook.com/",
   ),
   PhotoItem(
     "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png",
-    "instagram",
+    "INSTAGRAM",
     "https://www.instagram.com/",
   ),
   PhotoItem(
     "https://cdn-icons-png.flaticon.com/512/174/174857.png",
-    "linkedin",
+    "LINKEDIN",
     "https://www.linkedin.com/in/",
   ),
   PhotoItem(
       "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
-      "github",
+      "GITHUB",
       "https://www.github.com/"),
   PhotoItem(
     "https://cdn-icons-png.flaticon.com/512/124/124021.png",
-    "twitter",
+    "TWITTER",
     "https://www.twitter.com/",
   ),
   PhotoItem(
     "https://seeklogo.com/images/T/tiktok-logo-B9AC5FE794-seeklogo.com.png",
-    "tiktok",
+    "TIKTOK",
     "https://www.tiktok.com/@",
   ),
   PhotoItem(
     "https://play-lh.googleusercontent.com/dVsv8Hc4TOUeLFAahxR8KANg22W9dj2jBsTW1VHv3CV-5NCZjP9D9i2j5IpfVx2NTB8",
-    "pinterest",
+    "PINSTEREST",
     "https://tr.pinterest.com/",
   ),
   PhotoItem(
     "https://www.youtube.com/img/desktop/yt_1200.png",
-    "Youtube",
+    "YOUTUBE",
     "https://www.youtube.com/@",
   ),
   PhotoItem(
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp0XYQs3vYq-YHipSF_Thb3JDTWCSv2XBsoog-k5iWpRopmaCkay_6fNVSU4VZE8VAfH0&usqp=CAU",
-    "Reddit",
+    "REDDIT",
     "https://www.reddit.com/r/",
   ),
   PhotoItem(
@@ -131,8 +131,8 @@ class _HomePageState extends State<HomePage> {
       drawer: NavBar(),
       body: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 15,
+          crossAxisSpacing: 25,
+          mainAxisSpacing: 25,
           crossAxisCount: 3,
         ),
         itemCount: _items.length,
@@ -163,6 +163,7 @@ class _HomePageState extends State<HomePage> {
             },
             child: Container(
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(_items[index].image),
@@ -213,37 +214,3 @@ AppBar searchBar() {
         ),
       ));
 }
-
-
-
-
-
-
-
-/*
-searchUserUrl(
-  String social,
-  String userdata,
-) {
-  late String searchUrl;
-  print(social);
-  print(userdata);
-  switch (social) {
-    case "FACEBOOK":
-      searchUrl = "https://www.facebook.com/" '$userdata';
-      break;
-    case "INSTAGRAM":
-      searchUrl = "https://www.instagram.com/" '$userdata';
-      break;
-    case "LINKEDIN":
-      searchUrl = "https://www.linkedin.com/in/" '$userdata';
-      break;
-    case "GITHUB":
-      searchUrl = 'https://www.github.com/' '$userdata';
-      break;
-    case "TWEETER":
-      break;
-  }
-  print(searchUrl);
-  return searchUrl;
-}*/

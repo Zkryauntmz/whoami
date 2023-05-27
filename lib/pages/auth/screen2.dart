@@ -36,10 +36,6 @@ class RouteTwo extends StatelessWidget {
             child: WebView(
               initialUrl: url + data,
               javascriptMode: JavascriptMode.unrestricted,
-
-              //"https://twitter.com/" '$data'
-              //"htttp://www." '$name' ".com/" '$data'
-              //            searchUserUrl(name, data)),
             )));
   }
 }
