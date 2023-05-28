@@ -13,8 +13,7 @@ class NavBar extends StatelessWidget {
           children: [
             const UserAccountsDrawerHeader(
               accountName: Text('Hosgeldiniz'),
-              accountEmail: Text(''),
-              currentAccountPicture: CircleAvatar(),
+              accountEmail: Text(""),
               decoration: BoxDecoration(
                 color: Colors.redAccent,
               ),
