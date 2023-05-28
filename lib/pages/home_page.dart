@@ -114,6 +114,7 @@ final List<PhotoItem> _items = [
     "https://www.younow.com/",
   ),
 ];
+List<dynamic> liked = [];
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -173,6 +174,16 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          liked.add(myController.text);
+        },
+        highlightElevation: 50,
+        hoverElevation: 50,
+        hoverColor: Colors.redAccent,
+        backgroundColor: Colors.redAccent,
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
@@ -205,7 +216,8 @@ AppBar searchBar() {
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
                   onPressed: () {
-                    print(myController.text);
+                    // print(myController.text);
+                    print(liked);
                   },
                 ),
                 hintText: ' Kullanıcı adını giriniz ',

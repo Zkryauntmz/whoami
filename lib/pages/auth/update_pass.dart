@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../../service/auth.service.dart';
+
 class UpdatePass extends StatefulWidget {
   const UpdatePass({super.key});
 
@@ -11,61 +13,79 @@ class UpdatePass extends StatefulWidget {
 }
 
 class _UpdatePassState extends State<UpdatePass> {
-  var oldPasswordController = TextEditingController;
-  var newPasswordController = TextEditingController;
-  var auth = FirebaseAuth.instance;
-  var currentUser = FirebaseAuth.instance.currentUser;
-
-  changePassword({email, oldPassword, newPassword}) async {
-    var cred =
-        EmailAuthProvider.credential(email: email, password: oldPassword);
-    await currentUser
-        ?.reauthenticateWithCredential(cred)
-        .then((value) => currentUser?.updatePassword(newPassword))
-        .catchError((error) {
-      print(error.toString());
-    });
-  }
+  TextEditingController updatePasswordController = TextEditingController();
+  final formkey = GlobalKey<FormState>();
+  final firebaseAuth = FirebaseAuth.instance;
+  final authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Appbar(),
-        body: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            TextFormField(
-              //controller: oldPasswordController,
-              decoration: const InputDecoration(
-                isDense: true,
-                alignLabelWithHint: true,
-                //labelStyle: 'Old Password',
-                hintText: 'Old Password',
-                border: OutlineInputBorder(),
-                hintStyle: TextStyle(color: Colors.white),
+      appBar: Appbar(),
+      body: appBody(),
+      backgroundColor: Colors.blue[200],
+    );
+  }
+
+  SingleChildScrollView appBody() {
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Form(
+                key: formkey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    customSizedBox(),
+                    emailTextField(),
+                    customSizedBox(),
+                    updatePasswordButton(),
+                    customSizedBox(),
+                    customSizedBox(),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            TextFormField(
-              // controller: newPasswordController,
-              decoration: const InputDecoration(
-                isDense: true,
-                alignLabelWithHint: true,
-                //   labelStyle: 'Old Password',
-                hintText: 'New Password',
-                hintStyle: TextStyle(color: Colors.white),
-                border: OutlineInputBorder(),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  TextFormField emailTextField() {
+    return TextFormField(
+      controller: updatePasswordController,
+      style: const TextStyle(color: Colors.black),
+      decoration: customInputDecoration("Email"),
+    );
+  }
+
+  Center updatePasswordButton() {
+    return Center(
+      child: TextButton(
+        onPressed: () async {
+          var updateEmail = updatePasswordController.text.trim();
+          try {
+            FirebaseAuth.instance.sendPasswordResetEmail(email: updateEmail);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("Sifre Guncelleme Mailiniz Yollandı"),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            /*ElevatedButton(
-                onPressed:() async{ await changePassword(email: "zekoj1819@gmail.com",oldPassword: oldPasswordController.text, newPassword: newPasswordController.text )}, 
-                child: const Text('Change Password'));*/
-          ]),
-        ));
+            );
+            Navigator.pushReplacementNamed(context, "/HomePage");
+          } on FirebaseAuthException catch (e) {
+            print('Erro $e');
+          }
+        },
+        child: const Text(
+          "Dogrulama Emaili Yolla ",
+        ),
+      ),
+    );
   }
 
   // ignore: non_constant_identifier_names
@@ -86,4 +106,24 @@ class _UpdatePassState extends State<UpdatePass> {
         backgroundColor: Colors.redAccent[400],
         title: const Text('Update Password'));
   }
+}
+
+Widget customSizedBox() => const SizedBox(
+      height: 20,
+    );
+InputDecoration customInputDecoration(String hintText) {
+  return InputDecoration(
+    hintText: hintText,
+    hintStyle: const TextStyle(color: Colors.black),
+    enabledBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.black,
+      ),
+    ),
+    focusedBorder: const UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.black,
+      ),
+    ),
+  );
 }
