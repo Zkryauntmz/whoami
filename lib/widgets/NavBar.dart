@@ -4,12 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:whoami/pages/home_page.dart';
 
 // ignore: use_key_in_widget_constructors
-class NavBar extends StatefulWidget {
-  @override
-  State<NavBar> createState() => _NavBarState();
-}
-
-class _NavBarState extends State<NavBar> {
+class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -32,7 +27,7 @@ class _NavBarState extends State<NavBar> {
             ListTile(
               leading: const Icon(Icons.add),
               title: const Text('Liked'),
-              onTap: () => Navigator.pushNamed(context, "/update"),
+              onTap: () => Navigator.pushNamed(context, "/liked"),
             ),
             ListTile(
               leading: const Icon(Icons.login_outlined),

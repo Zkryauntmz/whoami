@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, unused_field
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whoami/widgets/NavBar.dart';
 import 'auth/screen2.dart';
@@ -119,6 +120,8 @@ List<dynamic> liked = [];
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  //const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -176,7 +179,11 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          liked.add(myController.text);
+          if (myController.text.isEmpty) {
+            return;
+          } else {
+            liked.add(myController.text);
+          }
         },
         highlightElevation: 50,
         hoverElevation: 50,

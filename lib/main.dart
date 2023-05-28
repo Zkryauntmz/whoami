@@ -1,11 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:whoami/pages/auth/forget_pass.dart';
+
 import 'package:whoami/pages/auth/login_page.dart';
 import 'package:whoami/pages/auth/screen2.dart';
 import 'package:whoami/pages/auth/sign_up.dart';
 import 'package:whoami/pages/auth/update_pass.dart';
 import 'package:whoami/pages/home_page.dart';
+import 'package:whoami/pages/liked.dart';
 import 'package:whoami/utils/customColors.dart';
 import 'firebase_options.dart';
 
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
               url: '',
             ),
         "/update": (context) => const UpdatePass(),
+        "/liked": (context) => const LikedScreen(),
       },
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,
