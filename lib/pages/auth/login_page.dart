@@ -163,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text("Başarı ile giriş yapıldı ..."),
+            content: Text("BASARI ILE GIRIS YAPILDI  ..."),
           ),
         );
 

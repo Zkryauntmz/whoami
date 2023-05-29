@@ -73,7 +73,7 @@ class _UpdatePassState extends State<UpdatePass> {
             FirebaseAuth.instance.sendPasswordResetEmail(email: updateEmail);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text("Sifre Guncelleme Mailiniz Yollandı"),
+                content: Text("SIFRE YENILEME MAILINIZ YOLLANDI "),
               ),
             );
             Navigator.pushReplacementNamed(context, "/HomePage");
@@ -82,7 +82,7 @@ class _UpdatePassState extends State<UpdatePass> {
           }
         },
         child: const Text(
-          "Dogrulama Emaili Yolla ",
+          "DOGRUMALAMA MAILI YOLLA ",
         ),
       ),
     );

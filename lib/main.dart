@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,
       ),
       home: const Scaffold(
-        body: HomePage(),
+        body: LoginPage(),
       ),
     );
   }

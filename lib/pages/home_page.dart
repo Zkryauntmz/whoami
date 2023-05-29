@@ -146,7 +146,7 @@ class _HomePageState extends State<HomePage> {
               if (myController.text.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text("Bos Deger Girmeyin"),
+                    content: Text("BOS DEĞER GIRMEYIN"),
                   ),
                 );
 
@@ -226,7 +226,7 @@ AppBar searchBar() {
                     print(liked);
                   },
                 ),
-                hintText: ' Kullanıcı adını giriniz ',
+                hintText: ' KULLANICI BILGILERINI GIRINIZ  ',
                 border: InputBorder.none),
           ),
         ),

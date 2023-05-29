@@ -84,7 +84,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             FirebaseAuth.instance.sendPasswordResetEmail(email: forgetEmail);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text("Lutfen Emailinizi Kontrol ediniz..."),
+                content: Text("LUTFEN MAIL ADRESINIZI KONTROL EDINIZ..."),
               ),
             );
             Navigator.pushReplacementNamed(context, "/loginPage");
