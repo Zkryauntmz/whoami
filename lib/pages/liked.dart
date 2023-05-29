@@ -13,6 +13,9 @@ class LikedScreen extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
                 title: Text(liked[index]),
+                leading: const Icon(
+                  Icons.delete,
+                ),
               );
             },
           ),
@@ -34,6 +37,3 @@ class LikedScreen extends StatelessWidget {
             title: const Text('LIKED USERS')));
   }
 }
-
-// ignore: non_constant_identifier_names
-

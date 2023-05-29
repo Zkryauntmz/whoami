@@ -1,7 +1,6 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:whoami/pages/home_page.dart';
 
 // ignore: use_key_in_widget_constructors
 class NavBar extends StatelessWidget {

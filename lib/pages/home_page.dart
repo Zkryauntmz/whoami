@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print, unused_field
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whoami/widgets/NavBar.dart';
 import 'auth/screen2.dart';
