@@ -4,21 +4,46 @@ import 'package:whoami/pages/home_page.dart';
 class LikedScreen extends StatelessWidget {
   const LikedScreen({super.key});
 
+  Widget showList() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(10),
+      itemCount: liked.length,
+      itemBuilder: (BuildContext context, int index) {
+        return rowItem(context, index);
+      },
+    );
+  }
+
+  Widget rowItem(context, index) {
+    return Dismissible(
+      key: Key(liked[index]),
+      onDismissed: (direction) {},
+      background: deleteBgItem(),
+      child: Card(
+        child: ListTile(
+          title: Text(liked[index]),
+        ),
+      ),
+    );
+  }
+
+  Widget deleteBgItem() {
+    return Container(
+      alignment: Alignment.centerRight,
+      padding: const EdgeInsets.only(right: 20),
+      color: Colors.red,
+      child: const Icon(
+        Icons.delete,
+        color: Colors.white,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-          child: ListView.builder(
-            itemCount: liked.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                title: Text(liked[index]),
-                leading: const Icon(
-                  Icons.delete,
-                ),
-              );
-            },
-          ),
+        body: Container(
+          child: showList(),
         ),
         backgroundColor: Colors.blue,
         appBar: AppBar(
